@@ -7,7 +7,7 @@
     <title>Trang admin</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="icon/bootstrap-icons.min.css">
-    
+
 
 </head>
 <main>
@@ -31,28 +31,27 @@
             </thead>
             <tbody>
                 <?php
-                    include "connect.php";
+                include "connect.php";
 
-                    $sql = "select * from flowers";
-                    $result = mysqli_query($conn, $sql);
-                    while($row = mysqli_fetch_array($result))
-                    {?>
-                        <tr>
-                            <td><?php echo $row['name']?> </td>
-                            <td><?php echo $row['description']?> </td>
-                            <td>
+                $sql = "select * from flowers";
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($result)) { ?>
+                    <tr>
+                        <td><?php echo $row['name'] ?> </td>
+                        <td><?php echo $row['description'] ?> </td>
+                        <td>
                             <img src="<?php echo $row['image_path']; ?>" alt="<?php echo $row['name']; ?>" style="width: 100px; height: auto;">
-                            </td>
-                            <td><a href="" class="text-primary "><i class="bi bi-pencil-square"></i></a></td>
-                            <td><a href="" class="text-primary"><i class="bi bi-trash-fill"></i></a></td>
-                        </tr>
+                        </td>
+                        <td><a href="edit.php?edit_id=<?php echo $row['id']; ?>" class="text-primary "><i class="bi bi-pencil-square"></i></a></td>
+                        <td><a href="delete.php?delete_id=<?php echo $row['id']; ?>" class="text-primary"><i class="bi bi-trash-fill"></i></a></td>
+                    </tr>
                 <?php
-                    }
+                }
                 ?>
 
             </tbody>
         </table>
     </div>
 </main>
+
 <body>
-    
